@@ -15,7 +15,7 @@ model Product{
   name  String
   description String?
   price   Int
-  quantity Int
+  quantity Int @default(0)
   cart Cart[]   
 }
 
