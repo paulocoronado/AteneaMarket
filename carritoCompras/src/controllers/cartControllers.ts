@@ -11,7 +11,8 @@ const prisma= new PrismaClient()
 
 //TO DO: Borrar productos del carrito
 
-export const getCartProducts =async (req:Request, res:Response)=>{
+export const getCartProducts =async (req:Request, res:Response)=>{    
+
 
     const {userId}= req.params
 
@@ -96,3 +97,4 @@ export const addProductToCart=[
     }
 }
 ]
+
