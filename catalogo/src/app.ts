@@ -7,9 +7,9 @@ import express, {Application, Request, Response, NextFunction} from 'express'
 
 import catalogRoutes from './routes/catalogRoutes'
 
-import dotenv from 'dotenv'
+import dotenv from 'dotenv'  //aqui
 
-dotenv.config()
+dotenv.config() //aqui
 
 const app:Application = express()
 
