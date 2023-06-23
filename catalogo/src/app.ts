@@ -8,12 +8,17 @@ import express, {Application, Request, Response, NextFunction} from 'express'
 import catalogRoutes from './routes/catalogRoutes'
 
 import dotenv from 'dotenv'  //aqui
+import cors from 'cors'
 
 dotenv.config() //aqui
 
 const app:Application = express()
 
 app.use(express.json())
+
+// ALERTA: Para toda petición.
+//Debería limitar los orígenes con los que puede establecer relaciones de confianza
+app.use(cors())
 
 /**
  * Agregar al stack un conjunto de rutas
