@@ -18,7 +18,53 @@ model Product{
   price   Int
   quantity Int @default(0)
   cart Cart[]   
+  photos ProductPhoto[]
+  categories ProductCategory[]
+  stocks Stock[]
+  sales Sale[]
 }
+
+model Photo{
+  id    Int @id @default(autoincrement())
+  url  String
+  description String?
+  productPhotos ProductPhoto[]
+  categoryPhotos CategoryPhoto[]
+}
+
+model ProductPhoto{
+  idProduct Int
+  product Product @relation(fields: [idProduct], references: [id])
+  idPhoto   Int
+  photo Photo @relation(fields:[idPhoto], references: [id])
+  @@id([idProduct,idPhoto])
+}
+
+model Category{
+  id    Int @id @default(autoincrement())
+  name  String
+  title String
+  description String?
+  photos CategoryPhoto[]
+  products ProductCategory[]
+}
+
+model CategoryPhoto{
+  idCategory Int
+  category Category @relation(fields: [idCategory], references: [id])
+  idPhoto   Int
+  photo Photo @relation(fields:[idPhoto], references: [id])
+  @@id([idCategory,idPhoto])
+}
+
+model ProductCategory{
+  idProduct Int
+  product Product @relation(fields: [idProduct], references: [id])
+  idCategory Int
+  category Category @relation(fields: [idCategory],references: [id])
+  @@id([idProduct,idCategory])
+}
+
 
 model Cart{
   id    Int @id @default(autoincrement())
@@ -39,3 +85,17 @@ model User{
   cart Cart[]
 }
 
+model Stock{
+  id Int @id @default(autoincrement())
+  idProduct Int
+  quantity Int
+  date DateTime @default(now())
+  product Product @relation(fields: [idProduct], references: [id])
+}
+model Sale{
+  id Int @id @default(autoincrement())
+  idProduct Int
+  quantity Int
+  date DateTime @default(now())
+  product Product @relation(fields: [idProduct], references: [id])
+}
