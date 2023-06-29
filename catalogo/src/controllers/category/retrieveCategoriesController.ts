@@ -36,14 +36,12 @@ export const getCategories = async (req:Request, res:Response)=>{
                 include: {
                     photos: {
                         select: {
-                            photo: {
-                                select: {
-                                    url: true
-                                }
+                            photo: true
                             }
                         }
                     }
-                }
+                
+                
             }
         )
         res.json(categories)
