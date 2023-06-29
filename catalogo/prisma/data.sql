@@ -7,6 +7,29 @@ VALUES
 ('Bob Williams', 'bob.williams@example.com', '789 Pine St, City', '777-888-9999'),
 ('Charlie Davis', 'charlie.davis@example.com', '321 Maple St, City', '111-222-3333');
 
+INSERT INTO Photo (url, description) VALUES
+('http://example.com/photo1.jpg', 'Description for photo 1'),
+('http://example.com/photo2.jpg', 'Description for photo 2'),
+('http://example.com/photo3.jpg', 'Description for photo 3'),
+('http://example.com/photo4.jpg', 'Description for photo 4'),
+('http://example.com/photo5.jpg', 'Description for photo 5'),
+('http://example.com/photo6.jpg', 'Description for photo 6'),
+('http://example.com/photo7.jpg', 'Description for photo 7'),
+('http://example.com/photo8.jpg', 'Description for photo 8'),
+('http://example.com/photo9.jpg', 'Description for photo 9'),
+('http://example.com/photo10.jpg', 'Description for photo 10'),
+('http://example.com/photo11.jpg', 'Description for photo 11'),
+('http://example.com/photo12.jpg', 'Description for photo 12'),
+('http://example.com/photo13.jpg', 'Description for photo 13'),
+('http://example.com/photo14.jpg', 'Description for photo 14'),
+('http://example.com/photo15.jpg', 'Description for photo 15'),
+('http://example.com/photo16.jpg', 'Description for photo 16'),
+('http://example.com/photo17.jpg', 'Description for photo 17'),
+('http://example.com/photo18.jpg', 'Description for photo 18'),
+('http://example.com/photo19.jpg', 'Description for photo 19'),
+('http://example.com/photo20.jpg', 'Description for photo 20');
+
+
 -- Inserting data into the Category table
 INSERT INTO Category (name, title, description)
 VALUES 
@@ -141,4 +164,8 @@ DELETE FROM Product;
 
 -- Truncate the Photo table
 DELETE FROM Photo;
+
+DELETE FROM sqlite_sequence;
+
 PRAGMA foreign_keys = ON;
+

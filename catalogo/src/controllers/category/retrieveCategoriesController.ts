@@ -32,7 +32,18 @@ export const getCategories = async (req:Request, res:Response)=>{
                 orderBy:{
                     name:'asc'
                 },
-                take:parseInt(totalItems)
+                take:parseInt(totalItems),
+                include: {
+                    photos: {
+                        select: {
+                            photo: {
+                                select: {
+                                    url: true
+                                }
+                            }
+                        }
+                    }
+                }
             }
         )
         res.json(categories)
