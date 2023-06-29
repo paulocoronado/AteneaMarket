@@ -20,6 +20,8 @@ model Product{
   cart Cart[]   
   photos ProductPhoto[]
   categories ProductCategory[]
+  stocks Stock[]
+  sales Sale[]
 }
 
 model Photo{
@@ -63,33 +65,23 @@ model ProductCategory{
   @@id([idProduct,idCategory])
 }
 
+model Stock{
+  id    Int @id @default(autoincrement())
+  productId Int
+  quantity  Int   
+  product Product @relation(fields: [productId], references: [id])  
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+model Sale{
+  id    Int @id @default(autoincrement())
+  productId Int
+  quantity  Int 
+  userId    Int 
+  date      DateTime @default(now())
+  product   Product @relation(fields: [productId], references: [id])  
+  user      User? @relation(fields: [userId], references: [id])
+  
+}
 
 model Cart{
   id    Int @id @default(autoincrement())
@@ -108,5 +100,5 @@ model User{
   address String?
   phone String?
   cart Cart[]
+  sales Sale[]
 }
-
