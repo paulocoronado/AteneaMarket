@@ -9,6 +9,7 @@ import catalogRoutes from './routes/catalogRoutes'
 
 import dotenv from 'dotenv'  //aqui
 import cors from 'cors'
+import categoryRoutes from './routes/categoryRoutes'
 
 dotenv.config() //aqui
 
@@ -25,6 +26,7 @@ app.use(cors())
  * 
  */
 app.use('/', catalogRoutes)
+app.use('/category', categoryRoutes)
 
 
 /**
