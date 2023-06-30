@@ -12,6 +12,9 @@ import cors from 'cors'
 import categoryRoutes from './routes/categoryRoutes'
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.conf';
+import authRouter from './routes/authRouter'
+import passport from 'passport'
+import strategy from './config/passport'
 
 
 dotenv.config() //aqui
@@ -30,8 +33,13 @@ app.use(cors())
  * Agregar al stack un conjunto de rutas
  * 
  */
-app.use('/', catalogRoutes)
-app.use('/category', categoryRoutes)
+app.use("/",authRouter)
+		// Configura passport para usar la estrategia de autenticación especificada en la variable 'strategy'
+passport.use(strategy)
+		// Configura la aplicación para usar el middleware de autenticación de passport. Este middleware inicializa el objeto de autenticación de passport en cada solicitud.
+app.use(passport.initialize())
+app.use("/",passport.authenticate("jwt",{session:false}),catalogRoutes)
+app.use('/category', passport.authenticate("jwt",{session:false}),categoryRoutes)
 
 
 /**
