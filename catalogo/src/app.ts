@@ -10,10 +10,15 @@ import catalogRoutes from './routes/catalogRoutes'
 import dotenv from 'dotenv'  //aqui
 import cors from 'cors'
 import categoryRoutes from './routes/categoryRoutes'
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './swagger.conf';
+
 
 dotenv.config() //aqui
 
 const app:Application = express()
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(express.json())
 
