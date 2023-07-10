@@ -1,0 +1,42 @@
+{
+
+	"categories":[
+                {
+                    "id": 1,
+                    "name": "Electronics",
+                    "title": "Top Quality Electronics",
+                    "description": "A wide range of top-quality electronics.",
+                    "photos": [
+                        {
+                            "id": 1,
+                            "url": "http://example.com/photos/1.jpg",
+                            "description": "A photo of a smartphone"
+                        },
+                        {
+                            "id": 2,
+                            "url": "http://example.com/photos/2.jpg",
+                            "description": "A photo of a laptop"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Books",
+                    "title": "Interesting Books",
+                    "description": "A wide selection of interesting books.",
+                    "photos": [
+                    {
+                        "id": 3,
+                        "url": "http://example.com/photos/3.jpg",
+                        "description": "A photo of a book"
+                    },
+                    {
+                        "id": 4,
+                        "url": "http://example.com/photos/4.jpg",
+                        "description": "A photo of a stack of books"
+                    }
+                    ]
+                }
+]
+
+}

@@ -1,28 +1,39 @@
 /**
- * Archivo principal del programa
+ * Archivo principal del microservicio de Catálogo
+ * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
  */
 
 import express, {Application, Request, Response, NextFunction} from 'express'
-import passport from 'passport';
-import cartRoutes from './routes/cartRoutes'
-import strategy from "./config/passport";
-import authRouter from './routes/auth';
+
+import catalogRoutes from './routes/catalogRoutes'
+
+import dotenv from 'dotenv'  //aqui
+import cors from 'cors'
+import categoryRoutes from './routes/categoryRoutes'
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './swagger.conf';
+
+
+dotenv.config() //aqui
 
 const app:Application = express()
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(express.json())
-passport.use(strategy);
+
+// ALERTA: Para toda petición.
+//Debería limitar los orígenes con los que puede establecer relaciones de confianza
+app.use(cors())
 
 /**
  * Agregar al stack un conjunto de rutas
  * 
  */
-app.use('/', cartRoutes)
-app.use('/', authRouter);
+app.use('/', catalogRoutes)
+app.use('/category', categoryRoutes)
 
 
-app.use(passport.initialize())
-app.use("/",passport.authenticate("jwt",{session:false}),cartRoutes)
 /**
  * Respuesta cuando la ruta no existe
  */
