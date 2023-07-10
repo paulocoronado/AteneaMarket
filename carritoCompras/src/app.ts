@@ -5,17 +5,22 @@
 import express, {Application, Request, Response, NextFunction} from 'express'
 
 import cartRoutes from './routes/cartRoutes'
-
+import passport from 'passport'
+import myStrategy from './config/passport'
+import rutas_auth from './routes/authRoutes'
 
 const app:Application = express()
 
 app.use(express.json())
+app.use('/auth',rutas_auth)
+passport.use(myStrategy)
+app.use(passport.initialize())
 
 /**
  * Agregar al stack un conjunto de rutas
  * 
  */
-app.use('/', cartRoutes)
+app.use('/',passport.authenticate('jwt', {session:false}),cartRoutes)
 
 
 /**
