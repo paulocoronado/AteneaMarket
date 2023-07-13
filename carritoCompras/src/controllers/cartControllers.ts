@@ -1,7 +1,7 @@
 
 /**
  * Lógica de negocio para el microservicio carrito de Compras
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
+ * @author Maidy Cabrera <maidyc914@gmail.com>
  */
 import { PrismaClient } from "@prisma/client"
 import { Request, Response } from "express"

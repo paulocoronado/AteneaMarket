@@ -1,6 +1,6 @@
 /**
  * Archivo principal del microservicio de Catálogo
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
+ * @author Maidy Cabrera <maidyc914@gmail.com>
  */
 
 import express, {Application, Request, Response, NextFunction} from 'express'

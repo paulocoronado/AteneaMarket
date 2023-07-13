@@ -4,7 +4,7 @@ import {addProductToCart, getCartProducts } from '../controllers/cartControllers
 /**
  * Rutas del microservicio Carrito de Compras
  * 
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co> 
+ * @author Maidy Cabrera <maidyc914@gmail.com> 
  */
 
 const myRouter:Router= Router()

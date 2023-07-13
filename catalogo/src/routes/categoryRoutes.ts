@@ -1,11 +1,12 @@
 import express, { Router} from 'express'
 import { getCategories } from '../controllers/category/retrieveCategoriesController'
 import { handleValidationErrors, validateTotalItems } from '../validators/category/retrieveCategoryValidator'
+import dotenv from 'dotenv'
 
 /**
  * Rutas del microservicio Catalog, módulo de Categorías
  * 
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co> 
+ * @author Maidy Cabrera <maidyc914@gmail.com> 
  */
 
 

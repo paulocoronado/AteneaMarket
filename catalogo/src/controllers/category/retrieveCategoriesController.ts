@@ -1,7 +1,7 @@
 
 /**
  * Lógica de negocio para obtener el inventario de categorías en el microservicio catálogo
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
+ * @author Maidy Cabrera <maidyc914@gmail.com>
  */
 import { PrismaClient } from "@prisma/client"
 import { Request, Response } from "express"
