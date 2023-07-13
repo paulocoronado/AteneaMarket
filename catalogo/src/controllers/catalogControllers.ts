@@ -1,7 +1,7 @@
 
 /**
  * Lógica de negocio para el microservicio carrito de Compras
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
+ * @author Ruben Felipe Millan Delgado <necroptich@gmail.com>
  */
 
 
@@ -20,19 +20,19 @@ export const getProductInventory =async (req:Request, res:Response)=>{
 
     if(isNaN(myProduct)){
         res.status(400)
-        res.json({error: 'Bad Request'})
-        return
+        res.json({error: 'Error'})
+       
     }
    
     try{
-        const productInventory= await prisma.product.findUnique(
+        const ProductInventory= await prisma.product.findUnique(
             {
                 where:{
                     id:myProduct
                 }
             }
         )
-        res.json(productInventory)
+        res.json(ProductInventory)
     }catch(error){
         console.error("Ocurrió un error", error)
         res.status(503)

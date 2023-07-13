@@ -2,12 +2,12 @@
  * Archivo principal del programa
  */
 
-import express, {Application, Request, Response, NextFunction} from 'express'
+import express, {Application, Request, Response, NextFunction} from 'express';
 
 import cartRoutes from './routes/cartRoutes'
 
 
-const app:Application = express()
+const app:Application = express();
 
 app.use(express.json())
 
@@ -39,10 +39,10 @@ app.use(
         
         res.status(500)
         console.log(error)
-        res.json({message:"Houston tenemos un problema!!"})
+        res.json({message:"Houston tenemos un problemonon de locos!!"})
     }
 )
 
 
 
-export default app
+export default app;

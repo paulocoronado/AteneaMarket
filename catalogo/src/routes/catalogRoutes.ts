@@ -5,7 +5,7 @@ import { getProductsList } from '../controllers/listaProductosController'
 /**
  * Rutas del microservicio Carrito de Compras
  * 
- * @author Paulo César Coronado <paulocoronado at udistrital.edu.co> 
+ * @author Ruben Felipe Millan Delgado <necroptich@gmail.com> 
  */
 
 const myRouter:Router= Router()
