@@ -2,19 +2,19 @@
  * Archivo principal del microservicio de Catálogo
  * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
  */
-
+import dotenv from 'dotenv';
+dotenv.config();
 import express, {Application, Request, Response, NextFunction} from 'express'
-
-import catalogRoutes from './routes/catalogRoutes'
-
-import dotenv from 'dotenv'  //aqui
+import passport from 'passport';
 import cors from 'cors'
-import categoryRoutes from './routes/categoryRoutes'
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.conf';
+import categoryRoutes from './routes/categoryRoutes'
+import catalogRoutes from './routes/catalogRoutes'
+import authRoutes from './routes/auth.route';
+import myStrategy from './config/passport';
 
 
-dotenv.config() //aqui
 
 const app:Application = express()
 
@@ -30,8 +30,12 @@ app.use(cors())
  * Agregar al stack un conjunto de rutas
  * 
  */
-app.use('/', catalogRoutes)
-app.use('/category', categoryRoutes)
+app.use('/security',authRoutes)
+// Se proteje las rutas con la estrategia de autenticación
+passport.use(myStrategy);
+app.use(passport.initialize());
+app.use('/catalogo',passport.authenticate('jwt',{session:false}), catalogRoutes)
+app.use('/category',passport.authenticate('jwt',{session:false}), categoryRoutes)
 
 
 /**
