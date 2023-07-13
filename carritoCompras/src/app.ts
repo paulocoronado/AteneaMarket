@@ -4,16 +4,18 @@
 
 import express, {Application, Request, Response, NextFunction} from 'express'
 
-import rutas_ejemplo from './routes/rutas_ejemplo'
+import cartRoutes from './routes/cartRoutes'
 
 
 const app:Application = express()
+
+app.use(express.json())
 
 /**
  * Agregar al stack un conjunto de rutas
  * 
  */
-app.use('/', rutas_ejemplo)
+app.use('/', cartRoutes)
 
 
 /**
