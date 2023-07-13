@@ -2,6 +2,7 @@
  * Archivo principal del microservicio de Catálogo
  * @author Paulo César Coronado <paulocoronado at udistrital.edu.co>
  */
+const config = require('../config.js');
 import dotenv from 'dotenv';
 dotenv.config();
 import express, {Application, Request, Response, NextFunction} from 'express'
@@ -34,8 +35,13 @@ app.use('/security',authRoutes)
 // Se proteje las rutas con la estrategia de autenticación
 passport.use(myStrategy);
 app.use(passport.initialize());
-app.use('/catalogo',passport.authenticate('jwt',{session:false}), catalogRoutes)
+console.log(process.env.SECRET_KEY);
+
+console.log(passport.initialize());
+
 app.use('/category',passport.authenticate('jwt',{session:false}), categoryRoutes)
+app.use('/catalogo',passport.authenticate('jwt',{session:false}), catalogRoutes)
+
 
 
 /**

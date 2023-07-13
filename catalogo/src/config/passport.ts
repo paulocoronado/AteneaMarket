@@ -2,7 +2,7 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 
 const opts = {
 	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-	secretOrKey:" holapomodoro"
+	secretOrKey:process.env.SECRET_KEY
 };
 
 const myStrategy: Strategy = new Strategy(
@@ -11,6 +11,8 @@ const myStrategy: Strategy = new Strategy(
 			id: payload.id,
 			username: payload.username
 		};
+		
+		
 		if (usuario) {
 			return done(null, usuario);
 		} else {
