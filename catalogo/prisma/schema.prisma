@@ -69,6 +69,7 @@ model Stock{
   id    Int @id @default(autoincrement())
   productId Int
   quantity  Int   
+  lastUpdate DateTime @default(now())
   product Product @relation(fields: [productId], references: [id])  
 }
 
