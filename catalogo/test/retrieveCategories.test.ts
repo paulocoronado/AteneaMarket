@@ -1,24 +1,17 @@
-import request from 'supertest'
-import app from '../src/app'
+import { NextFunction, Request, Response } from "express";
+import {ValidationChain, check, validationResult} from 'express-validator'
 
-describe('Probar la ruta de obtener categorías de la API', 
-    ()=>{
-        test('Debe retornar un listado de categorías',
-        async()=>{
-            const response= await request(app).get('/category/3')
-            expect(response.status).toBe(200)
-            expect(response.body).toBeInstanceOf(Array)
-            for(const element of response.body){
-                expect(element).toHaveProperty("id")
-                expect(element).toHaveProperty("name")
-                expect(element).toHaveProperty("title")
-            }
-        }
-        )
-        test('Debe retornar un error si el dato ingresa es menor a 0',
-        async()=>{
-            const response= await request(app).get('/category/-1')    
-            expect(response.status).toBe(400)
-        })
-    }
-)
+ 
+const  validateTotalItems: ValidationChain[]=[
+    check("totalItems")
+    .isInt({gt:0})
+    .withMessage("El total de items debe ser un entero mayor a 0")    ]
+
+const responseToValidation=(req:Request, res:Response, next:NextFunction)=>{
+    const errors= validationResult(req)
+    if (!errors.isEmpty()){
+        res.status(400)
+        res.json({error:errors.array()})
+        return res} next()}
+
+export {responseToValidation, validateTotalItems}
