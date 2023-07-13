@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { Router, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -23,7 +24,8 @@ class AuthRouter {
 				const options = {
 					expiresIn: '1h',
 				};
-				const secretKey = "holapomodoro";
+				const secretKey = process.env.SECRET_KEY
+								
 				//Verificar que secretKey sea un string
 				if (typeof secretKey === 'string') {
 					const token = jwt.sign(payload, secretKey, options);
